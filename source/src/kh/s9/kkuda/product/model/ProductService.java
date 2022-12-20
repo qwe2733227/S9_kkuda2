@@ -1,14 +1,14 @@
-package kh.s9.kkuda.member.model;
+package kh.s9.kkuda.product.model;
 
 import java.sql.Connection;
 import java.util.List;
 
 import common.jdbc.JdbcTemplate;
 
-public class MemberService {
-	private MemberDao dao = new MemberDao();
+public class ProductService {
+	private ProductDao dao = new ProductDao();
 //	insert - 등록
-	public int insert(MemberVo vo) {
+	public int insert(ProductVo vo) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.insert(conn, vo);
@@ -16,65 +16,43 @@ public class MemberService {
 		return result;
 	}
 //	update - 수정
-	public int update(MemberVo vo, String id/*주로 PK*/) {
+	public int update(ProductVo vo, int pocket/*주로 PK*/) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.update(conn, vo, id);
+		result = dao.update(conn, vo, pocket);
 		JdbcTemplate.close(conn);
 		return result;
 	}
 //	delete  - 삭제
-	public int delete(String id/*주로 PK*/) {
+	public int delete(int pocket/*주로 PK*/) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.delete(conn, id);
+		result = dao.delete(conn, pocket);
 		JdbcTemplate.close(conn);	
 		return result;
 	}
 //	selectList  - 목록조회
-	public List<MemberVo> selectList(){
-		List<MemberVo> volist = null;
+	public List<ProductVo> selectList(){
+		List<ProductVo> volist = null;
 		Connection conn = JdbcTemplate.getConnection();
 		volist = dao.selectList(conn);
 		JdbcTemplate.close(conn);
 		return volist;
 	}
 //	selectOne - 상세조회
-	public MemberVo selectOne(String id/*주로 PK*/){
-		MemberVo vo = null;
+	public ProductVo selectOne(int pocket/*주로 PK*/){
+		ProductVo vo = null;
 		Connection conn = JdbcTemplate.getConnection();
-		vo = dao.selectOne(conn, id);
+		vo = dao.selectOne(conn, pocket);
 		JdbcTemplate.close(conn);
 		return vo;
 	}
 // selectOne-Login 상세조회
-	public MemberVo login(String id, String passwd){
-		MemberVo vo = null;
+	public ProductVo login(int pocket, String goodsName){
+		ProductVo vo = null;
 		Connection conn = JdbcTemplate.getConnection();
-		vo = dao.login(conn, id, passwd);
+		vo = dao.login(conn, pocket, goodsName);
 		JdbcTemplate.close(conn);
 		return vo;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

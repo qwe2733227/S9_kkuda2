@@ -1,92 +1,60 @@
 package kh.s9.kkuda.member.model;
 
-import java.sql.Date;  // 중요 
 
 public class MemberVo {
-//	MID       NOT NULL VARCHAR2(30)  
-//	MPWD      NOT NULL VARCHAR2(20)  
-//	MNAME     NOT NULL VARCHAR2(100) 
-//	MEMAIL    NOT NULL VARCHAR2(100) 
-//	MENTRANCE NOT NULL DATE          
-//	MAUTHCODE NOT NULL VARCHAR2(20)  
-//	MCONSENT1 NOT NULL NUMBER(3)     
-//	MTYPE     NOT NULL NUMBER(1)     
-//	BUSNO              VARCHAR2(30)  
-	private String mid;
-	private String mpwd;
-	private String mname;
-	private String memail;
-	private Date mentrance;
-	private String mauthcode;
-	private int mconsent1;
-	private int mtype;
-	// BusinessInfoVo 사용하지 않고 분리해서 사용
-	private String busno;
+//	ID       NOT NULL VARCHAR2(30) 
+//	PASSWD   NOT NULL VARCHAR2(30) 
+//	NAME     NOT NULL VARCHAR2(20) 
+//	TEL      NOT NULL NUMBER       
+//	BRITHDAY NOT NULL NUMBER       
+//	GENDER   NOT NULL CHAR(1)
+	private String id;
+	private String passwd;
+	private String name;
+	private int tel;
+	private int brithday;
+	private char gender;
 	
-	public MemberVo() {
-		super();
-	}
 	@Override
 	public String toString() {
-		return "MemberVo [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", memail=" + memail + ", mentrance="
-				+ mentrance + ", mauthcode=" + mauthcode + ", mconsent1=" + mconsent1 + ", mtype=" + mtype + ", busno="
-				+ busno + "]";
+		return "MemberVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", tel=" + tel + ", brithday="
+				+ brithday + ", gender=" + gender + "]";
 	}
-	public String getMid() {
-		return mid;
+	public String getId() {
+		return id;
 	}
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getMpwd() {
-		return mpwd;
+	public String getPasswd() {
+		return passwd;
 	}
-	public void setMpwd(String mpwd) {
-		this.mpwd = mpwd;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
-	public String getMname() {
-		return mname;
+	public String getName() {
+		return name;
 	}
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMemail() {
-		return memail;
+	public int getTel() {
+		return tel;
 	}
-	public void setMemail(String memail) {
-		this.memail = memail;
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
-	public Date getMentrance() {
-		return mentrance;
+	public int getBrithday() {
+		return brithday;
 	}
-	public void setMentrance(Date mentrance) {
-		this.mentrance = mentrance;
+	public void setBrithday(int brithday) {
+		this.brithday = brithday;
 	}
-	public String getMauthcode() {
-		return mauthcode;
+	public char getGender() {
+		return gender;
 	}
-	public void setMauthcode(String mauthcode) {
-		this.mauthcode = mauthcode;
+	public void setGender(char gender) {
+		this.gender = gender;
 	}
-	public int getMconsent1() {
-		return mconsent1;
-	}
-	public void setMconsent1(int mconsent1) {
-		this.mconsent1 = mconsent1;
-	}
-	public int getMtype() {
-		return mtype;
-	}
-	public void setMtype(int mtype) {
-		this.mtype = mtype;
-	}
-	public String getBusno() {
-		return busno;
-	}
-	public void setBusno(String busno) {
-		this.busno = busno;
-	}
-
-
 	
 }

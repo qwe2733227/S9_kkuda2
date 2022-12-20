@@ -10,41 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import kh.s9.kkuda.member.model.MemberService;
 import kh.s9.kkuda.member.model.MemberVo;
 
-/**
- * Servlet implementation class LoginDoController
- */
 @WebServlet("/login.do")
 public class LoginDoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public LoginDoController() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String mid = request.getParameter("mid");
-		String mpwd = request.getParameter("mpwd");
+		String id = request.getParameter("id");
+		String passwd = request.getParameter("passwd");
 
 		MemberService service = new MemberService();
-		MemberVo loginInfo = service.login(mid, mpwd);
+		MemberVo loginInfo = service.login(id, passwd);
 		if (loginInfo != null) {
-			if (loginInfo.getMauthcode().equals("1")) {
 				System.out.println("로그인 성공");
 				request.getSession().setAttribute("loginSsInfo", loginInfo);
 				response.sendRedirect(request.getContextPath() + "/main");
-			} else if (loginInfo.getMauthcode().equals("0")) {
-				System.out.println("로그인인증전");
-			} else {
-				System.out.println("이메일을 통한 인증코드를 확인");
-			}
 		} else {
 			response.sendRedirect(request.getContextPath() + "/main");
 			System.out.println("로그인 실패");
