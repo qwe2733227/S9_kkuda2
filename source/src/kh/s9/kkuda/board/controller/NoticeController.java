@@ -30,6 +30,8 @@ public class NoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 아래의 변수들은 게시판목록을 만들때 고정
 		BoardService service = new BoardService();
 		final int pageSize = 2; // 페이지당글수 2
 		final int pageBlock = 3; // 페이지링크수 3 예)게시글하단에  1 2 3 >>  << 4 5 6 >>  << 7 8
@@ -39,6 +41,7 @@ public class NoticeController extends HttpServlet {
 		int startPage = 1;
 		int endPage = 1;
 		
+		String searchword = request.getParameter("search");
 		// TODO DB select
 		try {
 			cnt = service.selectTotalCnt();
@@ -66,9 +69,12 @@ public class NoticeController extends HttpServlet {
 				endRnum = cnt;
 			}
 			
-			List<BoardVo> boardlist = new BoardService().selectList(startRnum, endRnum);
+			List<BoardVo> boardlist = new BoardService().selectList(startRnum, endRnum, searchword);
 			request.setAttribute("boardlist", boardlist);
 		} finally {
+			if(searchword != null) {
+				request.setAttribute("searchword", searchword);
+			}
 			request.setAttribute("pageCnt", pageCnt);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);

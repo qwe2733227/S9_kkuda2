@@ -132,17 +132,31 @@ public class BoardDao {
 		}
 		
 //		selectList  - 목록조회 페이징 - overloading 
-		public List<BoardVo> selectList(Connection conn, int startRnum, int endRnum){
+		public List<BoardVo> selectList(Connection conn, int startRnum, int endRnum, String searchword){
 			List<BoardVo> volist = null;
 			
-			String sql = "select * from (select t1.*, rownum r from (select * from board order by bdate desc) t1 ) t2 "
+			String sql = "select * from (select t1.*, rownum r from "
+					+ "(select * from board order by bdate desc) t1 ) t2 "
+					+ " where r between ? and ?";
+			
+			String sqlSearch = "select * from (select t1.*, rownum r from "
+					+ "(select * from board  where btitle like ? or bcontent like ?or bwriter like ? order by bdate desc) t1 ) t2 "
 					+ " where r between ? and ?";
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, startRnum);
-				pstmt.setInt(2, endRnum);
+				if(searchword == null) {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, startRnum);
+					pstmt.setInt(2, endRnum);
+				} else {
+					pstmt.setInt(4, startRnum);
+					pstmt.setInt(5, endRnum);
+					searchword = "%"+searchword+ "%"; // LIKE 형식
+					pstmt.setString(1, searchword);
+					pstmt.setString(2, searchword);
+					pstmt.setString(2, searchword);
+				}
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					volist = new ArrayList<BoardVo>();

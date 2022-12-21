@@ -52,11 +52,11 @@ public class BoardService {
 		return volist;
 	}
 //	selectList - overloading
-	public List<BoardVo> selectList(int startRnum, int endRnum){
+	public List<BoardVo> selectList(int startRnum, int endRnum, String searchword){
 		List<BoardVo> volist = null;
 		Connection conn = JdbcTemplate.getConnection();
 	
-		volist = dao.selectList(conn, startRnum, endRnum);
+		volist = dao.selectList(conn, startRnum, endRnum, searchword);
 		
 		JdbcTemplate.close(conn);
 		return volist;
