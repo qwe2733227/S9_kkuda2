@@ -51,7 +51,7 @@ html, button, input, select, textarea, span, a, p {
 			</button>
 			<button type="button" id="join_btn"
 				onclick="location.href='./join.html'">
-				<span>회원가입</span>
+				<span><a href="${pageContext.request.contextPath }/join">회원가입</a></span>
 			</button>
 		</div>
 	</form>
