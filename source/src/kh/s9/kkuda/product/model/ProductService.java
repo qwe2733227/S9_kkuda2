@@ -12,6 +12,14 @@ public class ProductService {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.insert(conn, vo);
+		if(result > 0) {
+			JdbcTemplate.commit(conn); // 커밋
+			System.out.println("커밋성공");
+		} else {
+			JdbcTemplate.rollback(conn); // 롤백
+			System.out.println("커밋실패");
+		}
+
 		JdbcTemplate.close(conn);
 		return result;
 	}
@@ -20,6 +28,14 @@ public class ProductService {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.update(conn, vo, pocket);
+		if(result > 0) {
+			JdbcTemplate.commit(conn); // 커밋
+			System.out.println("커밋성공");
+		} else {
+			JdbcTemplate.rollback(conn); // 롤백
+			System.out.println("커밋실패");
+		}
+
 		JdbcTemplate.close(conn);
 		return result;
 	}
@@ -28,6 +44,14 @@ public class ProductService {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.delete(conn, pocket);
+		if(result > 0) {
+			JdbcTemplate.commit(conn); // 커밋
+			System.out.println("커밋성공");
+		} else {
+			JdbcTemplate.rollback(conn); // 롤백
+			System.out.println("커밋실패");
+		}
+
 		JdbcTemplate.close(conn);	
 		return result;
 	}
@@ -54,5 +78,13 @@ public class ProductService {
 		vo = dao.login(conn, pocket, goodsName);
 		JdbcTemplate.close(conn);
 		return vo;
+	}
+//	productList - 상품목록
+	public List<ProductVo> productList() {
+		List<ProductVo> voList = null;
+		Connection conn = JdbcTemplate.getConnection();
+		voList = dao.productList(conn);
+		JdbcTemplate.close(conn);
+		return voList;
 	}
 }

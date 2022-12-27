@@ -3,6 +3,7 @@ package kh.s9.kkuda.product.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import common.jdbc.JdbcTemplate;
@@ -43,33 +44,35 @@ public class ProductDao {
 //	selectOne - login - 상세조회
 	public ProductVo login(Connection conn, int pocket, String goodsName){
 		ProductVo vo = null;
-		//PK로 where했으므로 단일행 결과물
-		// * 속도 저하의 원인. 필요한 컬럼명을 나열함.
-		String query = "select pocket,goodsName from product where pocket=? and goodsName=?";
+		
+		return vo;
+	}
+//	productList - 상품목록
+	public List<ProductVo> productList(Connection conn) {
+		List<ProductVo> voList = null;
+		String sql = "select * from product";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, pocket);
-			pstmt.setString(2, goodsName);
+			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				//PK로 where했으므로 단일행 결과물로 while문 작성하지 않음
-				vo = new ProductVo();
-				vo.setPocket(rs.getInt("pocket"));
-				vo.setGoodsName(rs.getString("goodsName"));
-//				vo.setMid(rs.getString(1));
-//				vo.setMname(rs.getString(2));
-//				vo.setMauthcode(rs.getString(3));
-//				vo.setMtype(rs.getInt(5));
-//				vo.setBusno(rs.getString(4));
+				voList = new ArrayList<ProductVo>();
+				do {
+					ProductVo vo = new ProductVo();
+					vo.setPocket(rs.getInt("pocket"));
+					vo.setGoodsName(rs.getString("goodname"));
+					vo.setPrice(rs.getInt("price"));
+					vo.setProductimg(rs.getString("productimg"));
+					voList.add(vo);
+				}while(rs.next());
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
+		} catch (Exception e) {
+			
+		} finally {
 			JdbcTemplate.close(rs);
 			JdbcTemplate.close(pstmt);
 		}
-		return vo;
+		return voList;
 	}
 }
