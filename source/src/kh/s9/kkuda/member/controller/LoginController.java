@@ -19,6 +19,5 @@ public class LoginController extends HttpServlet {
 		String viewPath="WEB-INF/view/member/login.jsp";
 		request.getRequestDispatcher(viewPath).forward(request, response);
 	}
-
-
+	
 }

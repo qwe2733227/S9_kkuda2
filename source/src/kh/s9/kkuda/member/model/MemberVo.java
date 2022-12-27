@@ -13,8 +13,20 @@ public class MemberVo {
 	private String name;
 	private int tel;
 	private int brithday;
-	private char gender;
+	private String gender;
 	
+	public MemberVo() {
+		super();
+	}
+	public MemberVo(String id, String passwd, String name, int tel, int brithday, String gender) {
+		super();
+		this.id = id;
+		this.passwd = passwd;
+		this.name = name;
+		this.tel = tel;
+		this.brithday = brithday;
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
 		return "MemberVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", tel=" + tel + ", brithday="
@@ -50,11 +62,12 @@ public class MemberVo {
 	public void setBrithday(int brithday) {
 		this.brithday = brithday;
 	}
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	
 }

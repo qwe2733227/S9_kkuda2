@@ -1,39 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/reset.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/main_share_section.css">
-    <script src="${pageContext.request.contextPath }/js/jquery-3.6.1.js"></script>
-    <script src="${pageContext.request.contextPath }/js/main_share_scroll_action.js"></script>
-    <script src="${pageContext.request.contextPath }/js/main_header.js"></script>
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/login.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans:wght@100&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/reset.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/main.css">
+<!-- TODO: 여기에 필요한 css 넣기 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/login.css">
+    
+<script src="${pageContext.request.contextPath }/js/jquery-3.6.1.js"></script>
+<!-- TODO: 여기에 필요한 js 넣기 -->
+<!-- 전체공통 -->
+<style>
     <title>로그인 - 컬리</title>
-    <style>
-        #section {
-            width: 100%;
-        }
-        html{
-            scroll-behavior: smooth;
-        }
-    </style>
-    <!-- 전체공통 -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-        html, button, input, select, textarea, span, a, p {
-            font-family: "Noto Sans KR", "malgun gothic", /*AppleGothic*/dotum, sans-serif;
-        }
-    </style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
+	;
+
+html, button, input, select, textarea, span, a, p {
+	font-family: "Noto Sans KR", "malgun gothic", /*AppleGothic*/ dotum,
+		sans-serif;
+}
+</style>
 </head>
 <body>
+	<div>
+	<%@ include file="/WEB-INF/view/header.jsp" %>
+		<div id="section">
+			<div class="main_section">
+<!-- TODO: 여기에 필요한 HTML -->
 	<form action="./login.do" method="post">
 		<div class="input_area">
 			<input type="text" id="input_ID" name="id" placeholder="아이디를 입력해주세요">
@@ -53,5 +55,9 @@
 			</button>
 		</div>
 	</form>
+
+			</div>
+		</div>
+	</div>
 </body>
 </html>

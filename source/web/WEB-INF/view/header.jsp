@@ -12,9 +12,9 @@
 	                        <div>|</div>
                    		</c:when>
                    		<c:otherwise>
-                    		${loginSsInfo.mname }
+                    		<a href="#">${loginSsInfo.name }</a>
 	                        <div>|</div>
-	                        <a href="${pageContext.request.contextPath }/logout">로그아웃</a>
+	                        <a href="${pageContext.request.contextPath }/logout.do">로그아웃</a>
 	                        <div>|</div>
                    		</c:otherwise>
                    	</c:choose>

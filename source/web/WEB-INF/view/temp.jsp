@@ -12,8 +12,9 @@
 	href="${pageContext.request.contextPath }/css/reset.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/main.css">
-
+<!-- TODO: 여기에 필요한 css 넣기 -->
 <script src="${pageContext.request.contextPath }/js/jquery-3.6.1.js"></script>
+<!-- TODO: 여기에 필요한 js 넣기 -->
 <!-- 전체공통 -->
 <style>
 <title>메인페이지</title>
@@ -32,7 +33,7 @@ html, button, input, select, textarea, span, a, p {
 	<%@ include file="/WEB-INF/view/header.jsp" %>
 		<div id="section">
 			<div class="main_section">
-
+<!-- TODO: 여기에 필요한 HTML -->
 			</div>
 		</div>
 	</div>
