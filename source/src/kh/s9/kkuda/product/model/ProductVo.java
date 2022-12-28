@@ -1,5 +1,9 @@
 package kh.s9.kkuda.product.model;
 
+//POCKET     NOT NULL NUMBER        
+//GOODSNAME           VARCHAR2(300) 
+//PRICE               NUMBER        
+//PRODUCTIMG          VARCHAR2(300)
 public class ProductVo {
 	private int pocket;
 	private String goodsName;

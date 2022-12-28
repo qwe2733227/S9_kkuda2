@@ -59,16 +59,20 @@ public class ProductDao {
 			if(rs.next()) {
 				voList = new ArrayList<ProductVo>();
 				do {
+					//POCKET     NOT NULL NUMBER        
+					//GOODSNAME           VARCHAR2(300) 
+					//PRICE               NUMBER        
+					//PRODUCTIMG          VARCHAR2(300)
 					ProductVo vo = new ProductVo();
-					vo.setPocket(rs.getInt("pocket"));
-					vo.setGoodsName(rs.getString("goodname"));
-					vo.setPrice(rs.getInt("price"));
-					vo.setProductimg(rs.getString("productimg"));
+					vo.setPocket(rs.getInt("POCKET"));
+					vo.setGoodsName(rs.getString("GOODSNAME"));
+					vo.setPrice(rs.getInt("PRICE"));
+					vo.setProductimg(rs.getString("PRODUCTIMG"));
 					voList.add(vo);
 				}while(rs.next());
 			}
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} finally {
 			JdbcTemplate.close(rs);
 			JdbcTemplate.close(pstmt);

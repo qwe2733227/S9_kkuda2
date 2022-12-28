@@ -22,13 +22,20 @@ public class MainController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ViewPath="WEB-INF/view/index.jsp";
-		request.getRequestDispatcher(ViewPath).forward(request, response);
+//		request.getRequestDispatcher(ViewPath).forward(request, response);
 		
 		//TODO 메인페이지에 상품목록 나열하기
 		System.out.println("ProductList");
 		ProductService service = new ProductService();
+		
+		//service.productList에 값이 안담기는 거 같음. 
 		List<ProductVo> voList = service.productList();
-		System.out.println("voList");
+		System.out.println(voList+"List영역");
+		request.setAttribute("list", voList);
+		String viewPath = "/WEB-INF/view/index.jsp";
+
+		request.getRequestDispatcher(viewPath).forward(request, response);
+
 		
 	}
 }
