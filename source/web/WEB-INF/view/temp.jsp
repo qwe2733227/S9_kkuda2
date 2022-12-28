@@ -12,8 +12,14 @@
 	href="${pageContext.request.contextPath }/css/reset.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/main.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/main_login.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/movie_content.css">
+	
 <!-- TODO: 여기에 필요한 css 넣기 -->
 <script src="${pageContext.request.contextPath }/js/jquery-3.6.1.js"></script>
+
 <!-- TODO: 여기에 필요한 js 넣기 -->
 <!-- 전체공통 -->
 <style>

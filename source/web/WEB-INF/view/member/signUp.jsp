@@ -12,6 +12,10 @@
 	href="${pageContext.request.contextPath }/css/reset.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/main.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/main_login.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/movie_content.css">
 <!-- TODO: 여기에 필요한 css 넣기 -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/signup.css">
 

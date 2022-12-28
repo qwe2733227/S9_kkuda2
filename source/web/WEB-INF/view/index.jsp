@@ -14,6 +14,10 @@
 	href="${pageContext.request.contextPath }/css/reset.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/main.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/main_login.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/movie_content.css">
 
 <script src="${pageContext.request.contextPath }/js/jquery-3.6.1.js"></script>
 <!-- 전체공통 -->
