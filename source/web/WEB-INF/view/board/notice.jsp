@@ -144,11 +144,11 @@ html, button, input, select, textarea, span, a, p {
 				</a>
 			</div>
 
-			<%@include file="/WEB-INF/view/right_nav.jsp"%>
+
 		</div>
 
 		<!-- footer -->
-		<%@include file="/WEB-INF/view/footer.jsp"%>
+
 	</div>
 </body>
 </html>
