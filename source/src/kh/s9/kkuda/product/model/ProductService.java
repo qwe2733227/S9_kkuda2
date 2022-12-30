@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import common.jdbc.JdbcTemplate;
-import kh.s9.kkuda.product.image.model.ProductImageDao;
 
 public class ProductService {
 	private ProductDao dao = new ProductDao();
-	private ProductImageDao daoImage = new ProductImageDao();
 //	insert - 등록
 	public int insert(ProductVo vo) {
 		int result = 0;
@@ -62,12 +60,6 @@ public class ProductService {
 		List<ProductVo> volist = null;
 		Connection conn = JdbcTemplate.getConnection();
 		volist = dao.selectList(conn);
-		JdbcTemplate.close(conn);
-		if(volist != null) {
-			for(int i=0; i<volist.size(); i++) {
-				volist.get(i).setProduct_i
-			}
-		}
 		JdbcTemplate.close(conn);
 		return volist;
 	}

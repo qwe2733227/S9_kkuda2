@@ -3,6 +3,7 @@ package kh.s9.kkuda.product.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,30 @@ public class ProductDao {
 //	selectOne - 상세조회
 	public ProductVo selectOne(Connection conn, int pocket/*주로 PK*/){
 		ProductVo vo = null;
+		String sql = "select * from product where pocket =?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pocket);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new ProductVo();
+				//POCKET     NOT NULL NUMBER        
+				//GOODSNAME           VARCHAR2(300) 
+				//PRICE               NUMBER        
+				//PRODUCTIMG          VARCHAR2(300)
+				vo.setPocket(rs.getInt("pocket"));
+				vo.setGoodsName(rs.getString("goodsName"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setProductimg(rs.getString("productimg"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(pstmt);
+		}
 		return vo;
 	}
 //	selectOne - login - 상세조회

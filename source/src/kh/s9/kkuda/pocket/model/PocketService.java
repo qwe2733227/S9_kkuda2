@@ -32,10 +32,10 @@ public class PocketService {
 		return result;
 	}
 //	selectList  - 목록조회
-	public List<PocketVo> selectList(){
-		List<PocketVo> volist = null;
+	public List<PocketProductListVo> selectList(String id){
+		List<PocketProductListVo> volist = null;
 		Connection conn = JdbcTemplate.getConnection();
-		volist = dao.selectList(conn);
+		volist = dao.selectList(conn, id);
 		JdbcTemplate.close(conn);
 		return volist;
 	}
@@ -44,14 +44,6 @@ public class PocketService {
 		PocketVo vo = null;
 		Connection conn = JdbcTemplate.getConnection();
 		vo = dao.selectOne(conn, id);
-		JdbcTemplate.close(conn);
-		return vo;
-	}
-// selectOne-Login 상세조회
-	public PocketVo login(String id, int pocket){
-		PocketVo vo = null;
-		Connection conn = JdbcTemplate.getConnection();
-		vo = dao.login(conn, id, pocket);
 		JdbcTemplate.close(conn);
 		return vo;
 	}

@@ -59,13 +59,13 @@ html, button, input, select, textarea, span, a, p {
 			private String goodsName;
 			private int price;
 			private String productimg; -->
-			<form action="/pocket.do" method="post">
-				<div class="b">${a.pocket }</div>
-				<div class="b">월 ${a.price }원x12</div>
-				<div class="b"><img src="${a.productimg }" width="200" height="200"></div>
-				<div class="b">${a.goodsName }</div>
+			<form action="<%=request.getContextPath()%>/pocketInsert.do" method="post">
+				<div class="b" name="price">월 ${a.price }원x12</div>
+				<div class="b" name="productimg"><img src="${a.productimg }" width="200" height="200"></div>
+				<div class="b" name="goodsName">${a.goodsName }</div>
 				<%-- TODO --%>
-				<div class="b"><button type="submit" name ="product"><img src= "${pageContext.request.contextPath }/images/장바구니로고_hover.svg"></button></div>
+				<input type="hidden" name="pocket" value="${a.pocket }">
+				<div class="b"><button type="submit"><img src= "${pageContext.request.contextPath }/images/장바구니로고_hover.svg"></button></div>
 			</form>
 		</div>
 		</c:forEach>

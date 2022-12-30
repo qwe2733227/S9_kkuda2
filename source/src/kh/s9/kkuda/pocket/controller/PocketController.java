@@ -1,4 +1,4 @@
-package kh.s9.kkuda.member.controller;
+package kh.s9.kkuda.pocket.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kh.s9.kkuda.member.model.MemberService;
 import kh.s9.kkuda.member.model.MemberVo;
+import kh.s9.kkuda.pocket.model.PocketProductListVo;
 import kh.s9.kkuda.pocket.model.PocketService;
 import kh.s9.kkuda.pocket.model.PocketVo;
 
@@ -44,8 +44,7 @@ public class PocketController extends HttpServlet {
 		}
 		String id = loginSsInfo.getId();
 		PocketService service = new PocketService();
-		PocketVo vo = new PocketVo();
-		List<PocketVo> pocketlist = service.selectList();
+		List<PocketProductListVo> pocketlist = service.selectList(id);
 		request.setAttribute("pocketlist", pocketlist);
 		request.getRequestDispatcher(path).forward(request, response);
 		

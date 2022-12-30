@@ -24,8 +24,8 @@
 	
 	<div class="productsflex">
 <c:choose>
-	<c:when test="${empty pocketlist }">
-		   <h2>담겨 있는 상품이 없습니다.</h2>
+	<c:when test="${empty loginSsInfo }">
+		   <h2>로그인을 해주세요.</h2>
 	</c:when>
 	<c:otherwise>
 		<c:forEach items="${pocketlist }" var="c">
